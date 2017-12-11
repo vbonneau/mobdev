@@ -4,6 +4,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.victor.mobdev.databinding.ActivityMain2Binding;
 
 
 /**
@@ -16,6 +17,6 @@ public class MainActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstance){
         super.onCreate(savedInstance);
 
-        //((ActivityMain2Binding) DataBindingUtil.setContentView(this,R.layout.activity_main2)).setViewModel(new MyViewModel());
+        ((ActivityMain2Binding) DataBindingUtil.setContentView(this,R.layout.activity_main2)).setViewModel(new MyViewModel());
     }
 }

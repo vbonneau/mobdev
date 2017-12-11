@@ -14,19 +14,17 @@
         >
 
         <TextView
-            android:id="@+id/counter"
-            android:text="@{Strin.ValueOf(viewModel.counter)}"
+            android:text="@{String.valueOf(viewModel.counter)}"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
 
         <Button
-            android:id="@+id/button"
             android:text="@{viewModel.buttonLabel}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:layout_editor_absoluteX="148dp"
             tools:layout_editor_absolutey="103db"
-            android:onClick="@{()->viewModel.onClick}"/>
+            android:onClick="@{()->viewModel.onClick()}"/>
 
     </LinearLayout>
 </layout>
