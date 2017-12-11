@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="con.example.victor.mobdev">
+
+    <data>
+        <variable name="viewModel" type="com.example.victor.mobdev.MyViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <TextView
+            android:id="@+id/counter"
+            android:text="@{Strin.ValueOf(viewModel.counter)}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/button"
+            android:text="@{viewModel.buttonLabel}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="148dp"
+            tools:layout_editor_absolutey="103db"
+            android:onClick="@{()->viewModel.onClick}"/>
+
+    </LinearLayout>
+</layout>
