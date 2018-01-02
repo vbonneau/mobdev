@@ -14,17 +14,64 @@
         >
 
         <TextView
-            android:text="@{String.valueOf(viewModel.counter)}"
+            android:text="@{String.valueOf(viewModel.titre)}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="auteur"
+            android:addTextChangedListener="@{viewModel.watcherAuteur}"/>
+
+        <TextView
+            android:text="@{String.valueOf(viewModel.auteur)}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <Button
-            android:text="@{viewModel.buttonLabel}"
+            android:id="@+id/chage"
+            android:text="change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="148dp"
+            tools:layout_editor_absolutey="103db" />
+
+        <Button
+            android:id="@+id/add"
+            android:text="add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="148dp"
+            tools:layout_editor_absolutey="103db" />
+
+        <Button
+            android:text="delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:layout_editor_absoluteX="148dp"
             tools:layout_editor_absolutey="103db"
-            android:onClick="@{()->viewModel.onClick()}"/>
+            android:onClick="@{()->viewModel.onClikDelete()}"/>
+
+        <Button
+            android:text="suiv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="148dp"
+            tools:layout_editor_absolutey="103db"
+            android:onClick="@{()->viewModel.onClikSuiv()}"/>
+
+        <Button
+            android:text="prec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="148dp"
+            tools:layout_editor_absolutey="103db"
+            android:onClick="@{()->viewModel.onClikPrec()}"/>
+        <TextView
+            android:text="@{String.valueOf(viewModel.actualIndex)}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
 
     </LinearLayout>
 </layout>
