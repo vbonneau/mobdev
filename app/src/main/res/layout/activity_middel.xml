@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="con.example.victor.mobdev">
+<data>
+    <variable name="viewModel" type="com.example.victor.mobdev.MyViewModel"/>
+</data>
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:text="auteur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="auteur"
+        android:addTextChangedListener="@{viewModel.watcherAuteur}"/>
+
+    <TextView
+        android:text="titre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="titre"
+        android:addTextChangedListener="@{viewModel.watcherTitre}"/>
+
+    <Button
+        android:text="ajouter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absolutey="103db"
+        android:onClick="@{()->viewModel.onClikAdd()}"/>
+
+
+    <Button
+        android:id="@+id/retourAdd"
+        android:text="retour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absolutey="103db" />
+
+</LinearLayout>
+</layout>
