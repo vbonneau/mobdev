@@ -55,17 +55,21 @@ public class MyViewModel {
     }
 
     public void onClikSuiv(){
-       if (actualIndex<books.size()-1)actualIndex++;
-        System.out.println("index "+actualIndex);
-        auteur.set(books.get(actualIndex).auteur);
-        titre.set(books.get(actualIndex).titre);
+        if(books.size()>0) {
+            if (actualIndex < books.size() - 1) actualIndex++;
+            System.out.println("index " + actualIndex);
+            auteur.set(books.get(actualIndex).auteur);
+            titre.set(books.get(actualIndex).titre);
+        }
     }
 
     public void onClikPrec(){
-        if (actualIndex>0)actualIndex=actualIndex-1;
-        System.out.println("index "+actualIndex);
-        auteur.set(books.get(actualIndex).auteur);
-        titre.set(books.get(actualIndex).titre);
+        if(books.size()>0) {
+            if (actualIndex > 0) actualIndex = actualIndex - 1;
+            System.out.println("index " + actualIndex);
+            auteur.set(books.get(actualIndex).auteur);
+            titre.set(books.get(actualIndex).titre);
+        }
     }
 
     public void onClikAdd(){
@@ -87,9 +91,14 @@ public class MyViewModel {
             book.auteur = auteur.get();
             book.titre = titre.get();
             book.save();
-            CharSequence text = "les information on été modifié";
+            CharSequence text = "les informations on été modifiées";
             int duration = Toast.LENGTH_SHORT;
 
+            Toast toast = Toast.makeText(ctx, text, duration);
+            toast.show();
+        }else {
+            CharSequence text = "il n'y a pas de livre à modifier";
+            int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(ctx, text, duration);
             toast.show();
         }
