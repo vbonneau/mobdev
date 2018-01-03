@@ -1,11 +1,15 @@
 package com.example.victor.mobdev;
 
+import android.content.Context;
 import android.databinding.ObservableField;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.widget.Toast;
 
 import java.util.List;
 import java.util.Observable;
+
+import static java.security.AccessController.getContext;
 
 /**
  * Created by victor on 04/12/2017.
@@ -16,9 +20,10 @@ public class MyViewModel {
     public ObservableField<String> auteur = new ObservableField<>();
     public ObservableField<String> titre = new ObservableField<>();
     public List<Book> books;
-    public String question;
+    public Context ctx;
 
-    public MyViewModel(){
+    public MyViewModel(Context ctx){
+        this.ctx=ctx;
         books=Book.listAll(Book.class);
         System.out.println("books");
         System.out.println(books.size());
@@ -87,6 +92,11 @@ public class MyViewModel {
         Book book=new Book(titre.get(),auteur.get());
         book.save();
         books=Book.listAll(Book.class);
+        CharSequence text = "le livre a été ajouté";
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(ctx, text, duration);
+        toast.show();
     }
 
 
@@ -95,6 +105,11 @@ public class MyViewModel {
         book.auteur=auteur.get();
         book.titre=titre.get();
         book.save();
+        CharSequence text = "les information on été modifié";
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(ctx, text, duration);
+        toast.show();
     }
 
     public TextWatcher watcherAuteur = new TextWatcher() {

@@ -26,7 +26,7 @@ public class MainActivity2 extends AppCompatActivity {
         super.onCreate(savedInstance);
 
 
-        ((ActivityMain2Binding) DataBindingUtil.setContentView(this, R.layout.activity_main2)).setViewModel(new MyViewModel());
+        ((ActivityMain2Binding) DataBindingUtil.setContentView(this, R.layout.activity_main2)).setViewModel(new MyViewModel(this));
         System.out.println("main activity");
         Button addButton = (Button) findViewById(R.id.add);
         addButton.setOnClickListener(new View.OnClickListener() {

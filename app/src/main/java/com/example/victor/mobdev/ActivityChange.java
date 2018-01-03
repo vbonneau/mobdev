@@ -19,7 +19,7 @@ public class ActivityChange extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             System.out.println("seconde activity");
 
-            ((ActivityChangeBinding) DataBindingUtil.setContentView(this,R.layout.activity_change)).setViewModel(new MyViewModel());
+            ((ActivityChangeBinding) DataBindingUtil.setContentView(this,R.layout.activity_change)).setViewModel(new MyViewModel(this));
 
             Button addButton = (Button) findViewById(R.id.retourChange);
             addButton.setOnClickListener(new View.OnClickListener() {

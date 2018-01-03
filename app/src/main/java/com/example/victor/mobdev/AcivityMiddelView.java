@@ -18,7 +18,7 @@ public class AcivityMiddelView  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         System.out.println("seconde activity");
 
-        ((ActivityMiddelBinding) DataBindingUtil.setContentView(this,R.layout.activity_middel)).setViewModel(new MyViewModel());
+        ((ActivityMiddelBinding) DataBindingUtil.setContentView(this,R.layout.activity_middel)).setViewModel(new MyViewModel(this));
 
         Button addButton = (Button) findViewById(R.id.retourAdd);
         addButton.setOnClickListener(new View.OnClickListener() {
