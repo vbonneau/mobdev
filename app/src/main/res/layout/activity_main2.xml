@@ -52,14 +52,14 @@
 
         <Button
             android:id="@+id/change"
-            android:text="change"
+            android:text="modifier"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:layout_editor_absoluteX="148dp"
             tools:layout_editor_absolutey="103db" />
 
                 <Button
-                    android:text="delete"
+                    android:text="suprimer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:layout_editor_absoluteX="148dp"
@@ -74,14 +74,14 @@
 
 
                 <Button
-                    android:text="prec"
+                    android:text="precedent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:layout_editor_absoluteX="148dp"
                     tools:layout_editor_absolutey="103db"
                     android:onClick="@{()->viewModel.onClikPrec()}"/>
                 <Button
-                    android:text="suiv"
+                    android:text="suivant"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:layout_editor_absoluteX="148dp"
@@ -96,7 +96,7 @@
 
                 <Button
                     android:id="@+id/add"
-                    android:text="add"
+                    android:text="ajouter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:layout_editor_absoluteX="148dp"

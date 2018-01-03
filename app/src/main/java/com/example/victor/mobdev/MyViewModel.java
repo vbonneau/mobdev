@@ -14,7 +14,7 @@ import static java.security.AccessController.getContext;
 /**
  * Created by victor on 04/12/2017.
  */
-//il faut ajoujer un ORM
+
 public class MyViewModel {
     public static int actualIndex=0;
     public ObservableField<String> auteur = new ObservableField<>();
@@ -38,25 +38,6 @@ public class MyViewModel {
 
     }
 
-
-    /*public void onClick(){
-
-        enableIncrement=!enableIncrement;
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (enableIncrement){
-                    buttonLabel.set("Stop");
-                    counter.set(counter.get()+1);
-                    try { Thread.sleep(500); } catch (Exception e){}
-                }
-
-                buttonLabel.set("Increment!");
-            }
-
-        }).start();
-    }*/
 
     public void onClikDelete(){
         if(books.size()>0) {
@@ -101,15 +82,17 @@ public class MyViewModel {
 
 
     public  void onClikChange(){
-        Book book=books.get(actualIndex);
-        book.auteur=auteur.get();
-        book.titre=titre.get();
-        book.save();
-        CharSequence text = "les information on été modifié";
-        int duration = Toast.LENGTH_SHORT;
+        if (books.size()>0) {
+            Book book = books.get(actualIndex);
+            book.auteur = auteur.get();
+            book.titre = titre.get();
+            book.save();
+            CharSequence text = "les information on été modifié";
+            int duration = Toast.LENGTH_SHORT;
 
-        Toast toast = Toast.makeText(ctx, text, duration);
-        toast.show();
+            Toast toast = Toast.makeText(ctx, text, duration);
+            toast.show();
+        }
     }
 
     public TextWatcher watcherAuteur = new TextWatcher() {
@@ -124,10 +107,7 @@ public class MyViewModel {
         @Override
         public void afterTextChanged(Editable editable) {
             auteur.set(editable.toString());
-            //titre.set(editable.toString());
-            /*Book book= new Book(editable.toString(),editable.toString());
-            System.out.println("not saved"+book.auteur);
-            book.save();*/
+
         }
     };
 
@@ -142,11 +122,9 @@ public class MyViewModel {
 
         @Override
         public void afterTextChanged(Editable editable) {
-            //auteur.set(editable.toString());
+
             titre.set(editable.toString());
-            /*Book book= new Book(editable.toString(),editable.toString());
-            System.out.println("not saved"+book.auteur);
-            book.save();*/
+
         }
     };
 
