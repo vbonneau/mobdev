@@ -12,20 +12,27 @@ import java.util.Observable;
  */
 //il faut ajoujer un ORM
 public class MyViewModel {
-    public int actualIndex=0;
+    public static int actualIndex=0;
     public ObservableField<String> auteur = new ObservableField<>();
     public ObservableField<String> titre = new ObservableField<>();
     public List<Book> books;
+    public String question;
 
     public MyViewModel(){
         books=Book.listAll(Book.class);
         System.out.println("books");
-        System.out.println(books);
+        System.out.println(books.size());
         System.out.println("books2");
-        //auteur.set(books.get(actualIndex).auteur);
-        //titre.set(books.get(actualIndex).titre);
+        if(books.size()>0) {
+            auteur.set(books.get(actualIndex).auteur);
+            titre.set(books.get(actualIndex).titre);
+        }else {
+            auteur.set("");
+            titre.set("");
+        }
 
     }
+
 
     /*public void onClick(){
 
@@ -47,11 +54,18 @@ public class MyViewModel {
     }*/
 
     public void onClikDelete(){
-        books.get(actualIndex).delete();
-        books=Book.listAll(Book.class);
-        actualIndex--;
-        auteur.set(books.get(actualIndex).auteur);
-        titre.set(books.get(actualIndex).titre);
+        if(books.size()>0) {
+            books.get(actualIndex).delete();
+            books = Book.listAll(Book.class);
+            if (actualIndex > 0) actualIndex--;
+            if (books.size() > 0) {
+                auteur.set(books.get(actualIndex).auteur);
+                titre.set(books.get(actualIndex).titre);
+            } else {
+                auteur.set("");
+                titre.set("");
+            }
+        }
     }
 
     public void onClikSuiv(){
@@ -69,35 +83,55 @@ public class MyViewModel {
     }
 
     public void onClikAdd(){
-        Book book=new Book(auteur.get(),titre.get());
+
+        Book book=new Book(titre.get(),auteur.get());
         book.save();
         books=Book.listAll(Book.class);
     }
 
-    public  void onClikChange(){
 
-        books.get(actualIndex).auteur=auteur.get();
-        books.get(actualIndex).titre=titre.get();
+    public  void onClikChange(){
+        Book book=books.get(actualIndex);
+        book.auteur=auteur.get();
+        book.titre=titre.get();
+        book.save();
     }
 
     public TextWatcher watcherAuteur = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
         }
 
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        }
 
+        @Override
+        public void afterTextChanged(Editable editable) {
+            auteur.set(editable.toString());
+            //titre.set(editable.toString());
+            /*Book book= new Book(editable.toString(),editable.toString());
+            System.out.println("not saved"+book.auteur);
+            book.save();*/
+        }
+    };
+
+    public TextWatcher watcherTitre = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
         }
 
         @Override
         public void afterTextChanged(Editable editable) {
             //auteur.set(editable.toString());
-            //titre.set(editable.toString());
-            Book book= new Book(editable.toString(),editable.toString());
+            titre.set(editable.toString());
+            /*Book book= new Book(editable.toString(),editable.toString());
             System.out.println("not saved"+book.auteur);
-            book.save();
+            book.save();*/
         }
     };
 

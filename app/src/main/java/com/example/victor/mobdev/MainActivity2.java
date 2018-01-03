@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.victor.mobdev.databinding.ActivityMain2Binding;
-import com.example.victor.mobdev.databinding.ActivityMiddelBinding;
+
 
 import java.util.ArrayList;
 
@@ -25,26 +25,30 @@ public class MainActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
 
-        /*MainActivityBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main2);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        binding.contactList.setLayoutManager(layoutManager);*/
-
-
-        /* data filling */
-
-        /*Adapter adapter = new Adapter(this);
-        binding.contactList.setAdapter(adapter);**/
 
         ((ActivityMain2Binding) DataBindingUtil.setContentView(this, R.layout.activity_main2)).setViewModel(new MyViewModel());
         System.out.println("main activity");
-       /* final Button loginButton = (Button) findViewById(R.id.chage);
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        Button addButton = (Button) findViewById(R.id.add);
+        addButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity2.this, AcivityMiddelView.class);
-                startActivity(intent);
+                Intent apell = new Intent(MainActivity2.this, AcivityMiddelView.class);
+                startActivity(apell);
             }
-        });*/
+        });
+
+
+
+        Button changeButton = (Button) findViewById(R.id.change);
+         changeButton.setOnClickListener(new View.OnClickListener() {
+
+           @Override
+           public void onClick (View v){
+                Intent apell = new Intent(MainActivity2.this,ActivityChange.class);
+                startActivity(apell);
+            }
+        });
     }
+
 }
